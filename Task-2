@@ -1,0 +1,26 @@
+import webbrowser
+import datetime
+
+def speak(text):
+    print(text)
+
+def listen():
+    command = input("Listening... ").lower()
+    return command
+
+def perform_task(command):
+    if "open youtube" in command:
+        webbrowser.open("https://www.youtube.com")
+        speak("Opening YouTube.")
+    elif "time" in command:
+        current_time = datetime.datetime.now().strftime("%H:%M")
+        speak(f"The time is {current_time}")
+    elif "search" in command:
+        search_term = command.replace("search", "").strip()
+        url = f"https://www.google.com/search?q={search_term}"
+        webbrowser.open(url)
+        speak(f"Searching for {search_term}.")
+    else:
+        speak("I am not sure how to do that.")
+
+def main():
